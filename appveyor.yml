@@ -1,0 +1,15 @@
+version: 1.0.{build}
+
+clone_depth: 1
+
+install:
+  - cinst StrawberryPerl
+  - path C:\strawberry\perl\bin;C:\strawberry\perl\site\bin;C:\strawberry\c\bin;%PATH%
+  - perl -V
+  - cpanm -q --with-develop --with-suggests --installdeps .
+  
+build_script:
+  - perl Makefile.PL
+
+test_script:
+  - dmake test
